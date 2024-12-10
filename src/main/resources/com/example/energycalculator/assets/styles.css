@@ -1,0 +1,39 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Press+Start+2P&display=swap');
+
+.gradient-background{
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #FF8C00, #FFD700);
+}
+
+.title{
+    -fx-font-family: "Press Start 2P", system-ui;
+    -fx-font-weight: 300;
+    -fx-font-style: normal;
+}
+.line-color{
+    -fx-background-color: #F3ABB5;
+}
+
+.container{
+    -fx-spacing: 10;
+    -fx-padding: 5px 5px 5px 5px;
+}
+
+.container2{
+    -fx-background-radius: 10;
+    -fx-background-color : rgba(255, 255, 255, 0.2);
+    -fx-border-radius: 10;
+    -fx-border-style: solid;
+    -fx-border-color: #F3ABB5;
+
+}
+
+.button{
+    -fx-background-radius: 10;
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #FF8C00, #FFD700);
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+.button:hover{
+    -fx-background-color : #F3ABB5;
+}

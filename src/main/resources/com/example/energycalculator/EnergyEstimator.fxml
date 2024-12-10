@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" styleClass="gradient-background" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.energycalculator.EnergyEstimatorController">
+    <top>
+        <HBox alignment="CENTER" prefHeight="40.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+            <children>
+                <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="534.0" styleClass="title" stylesheets="@assets/styles.css" text="Energy Consumption Estimator" textFill="WHITE">
+                    <font>
+                        <Font name="Franklin Gothic Medium" size="12.0" />
+                    </font>
+                </Label>
+                <Pane maxHeight="1.0" prefHeight="1.0" prefWidth="326.0" styleClass="line-color" stylesheets="@assets/styles.css" HBox.hgrow="ALWAYS" />
+                <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                    <image>
+                        <Image url="@assets/lightninglogo.png" />
+                    </image>
+                </ImageView>
+            </children>
+        </HBox>
+    </top>
+    <left>
+        <VBox prefHeight="200.0" prefWidth="200.0" spacing="10.0" styleClass="container" stylesheets="@assets/styles.css" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+            <children>
+                <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container2" stylesheets="@assets/styles.css" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="title" stylesheets="@assets/styles.css" text="TIme Point" textFill="WHITE">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" top="10.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="8.0" />
+                                    </font></Label>
+                                <TextField fx:id="timeField">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin></TextField>
+                                <Label styleClass="title" stylesheets="@assets/styles.css" text="Energy Usage" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                    <font>
+                                        <Font name="Roboto Light" size="8.0" />
+                                    </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" />
+                           </VBox.margin></Label>
+                                <TextField fx:id="usageField" />
+                                <Button fx:id="addButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" text="Add Data Point">
+                                    <VBox.margin>
+                                        <Insets left="40.0" right="10.0" top="10.0" />
+                                    </VBox.margin>
+                           <font>
+                              <Font name="Droid Serif Bold" size="12.0" />
+                           </font></Button>
+                            </children>
+                            <padding>
+                                <Insets left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </VBox>
+                    </children></HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container2" stylesheets="@assets/styles.css" VBox.vgrow="ALWAYS">
+                    <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0" HBox.hgrow="ALWAYS">
+                            <children>
+                                <Label styleClass="title" stylesheets="@assets/styles.css" text="Interpolate Time" textFill="WHITE">
+                                    <VBox.margin>
+                                        <Insets bottom="5.0" top="10.0" />
+                                    </VBox.margin>
+                                    <font>
+                                        <Font name="Segoe UI Semibold" size="8.0" />
+                                    </font></Label>
+                                <TextField fx:id="interpolateField">
+                                    <VBox.margin>
+                                        <Insets bottom="10.0" />
+                                    </VBox.margin></TextField>
+                                <Button fx:id="interpolateButton" alignment="CENTER" mnemonicParsing="false" text="Interpolate">
+                           <VBox.margin>
+                              <Insets bottom="10.0" left="50.0" />
+                           </VBox.margin></Button>
+                                <Label styleClass="title" stylesheets="@assets/styles.css" text="Extrapolate Time" textFill="WHITE" VBox.vgrow="ALWAYS">
+                                    <font>
+                                        <Font name="Roboto Light" size="8.0" />
+                                    </font>
+                           <VBox.margin>
+                              <Insets bottom="5.0" top="10.0" />
+                           </VBox.margin></Label>
+                                <TextField fx:id="extrapolateField" />
+                                <Button fx:id="extrapolateButton" alignment="BOTTOM_CENTER" mnemonicParsing="false" text="Extrapolate">
+                                    <VBox.margin>
+                                        <Insets left="50.0" right="10.0" top="10.0" />
+                                    </VBox.margin></Button>
+                            </children>
+                            <padding>
+                                <Insets left="5.0" right="5.0" top="5.0" />
+                            </padding>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </left>
+    <center>
+        <VBox alignment="TOP_RIGHT" prefHeight="200.0" prefWidth="200.0" spacing="10.0" styleClass="container" stylesheets="@assets/styles.css" BorderPane.alignment="CENTER">
+            <BorderPane.margin>
+                <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+            </BorderPane.margin>
+            <children>
+            <Button fx:id="resetButton" alignment="TOP_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" text="Reset" />
+                <HBox fx:id="results" prefHeight="100.0" prefWidth="200.0" styleClass="container2" stylesheets="@assets/styles.css" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+               <children>
+                  <TextArea fx:id="outputArea" prefHeight="178.0" prefWidth="349.0" />
+               </children></HBox>
+                <HBox prefHeight="100.0" prefWidth="200.0" styleClass="container2" stylesheets="@assets/styles.css" VBox.vgrow="ALWAYS">
+                    <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                    </padding>
+               <children>
+                  <LineChart fx:id="energyChart">
+                      <xAxis>
+                          <NumberAxis label="Time" fx:id="xAxis" />
+                      </xAxis>
+                      <yAxis>
+                          <NumberAxis fx:id="yAxis" label="Energy Usage" />
+                      </yAxis>
+                  </LineChart>
+               </children></HBox>
+            </children>
+        </VBox>
+    </center>
+   <stylesheets>
+      <URL value="@assets/styles.css" />
+      <URL value="@assets/styles.css" />
+   </stylesheets>
+</BorderPane>
